@@ -72,3 +72,16 @@ h1 {
   background-color: #00ff88;
   color: #111;
 }
+#contenedor {
+  width: 100vw;
+  height: calc(100vh - 65px);
+  overflow: hidden;
+  position: relative;
+}
+
+#contenedor canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
