@@ -1,64 +1,50 @@
 <?php
 session_start();
-if (!isset($_SESSION['usuario_id'])) { header("Location: login.html"); exit(); }
 
-require_once "conexion.php"; 
-$user_id = $_SESSION['usuario_id'];
-$consulta = "SELECT u.nombre, u.apellido, f.codigo_familiar 
-             FROM usuarios u 
-             LEFT JOIN familias f ON u.familia_id = f.id 
-             WHERE u.id = $user_id";
+if (isset($_GET['vista']) && $_GET['vista'] === 'publica') {
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
 
-$resultado = mysqli_query($conexion, $consulta); 
-$datos_usuario = mysqli_fetch_assoc($resultado); 
+$user_id = isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : 0;
+$nombre_usuario = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : "Invitado";
+$rol_usuario = isset($_SESSION['rol']) ? $_SESSION['rol'] : "";
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel de Control - Monitoreo</title>
+    <title>Panel de Monitoreo - Sistema Pulsaciones</title>
     <link rel="stylesheet" href="panel.css">
-    <script>
-    // Pasamos el rol del usuario desde PHP a JavaScript
-    const ROL_USUARIO = "<?php echo $_SESSION['rol']; ?>";
-
-    // Solo aplicamos el cierre automático si NO es administrador
-    if (ROL_USUARIO !== 'admin') {
-        let tiempoInactividad = 20000; // 20 segundos en milisegundos
-        let temporizador;
-
-        const reiniciarTemporizador = () => {
-            clearTimeout(temporizador);
-            // Si pasan 20 segundos sin acción, redirige a logout.php
-            temporizador = setTimeout(() => {
-                alert("Tu sesión ha expirado por inactividad (20 segundos).");
-                window.location.href = "logout.php";
-            }, tiempoInactividad);
-        };
-
-        // Escuchar movimientos del mouse o pulsaciones de teclado del usuario
-        window.onload = reiniciarTemporizador;
-        window.onmousemove = reiniciarTemporizador;
-        window.onmousedown = reiniciarTemporizador; 
-        window.ontouchstart = reiniciarTemporizador;
-        window.onclick = reiniciarTemporizador;     
-        window.onkeydown = reiniciarTemporizador;   
-    }
-</script>
- <script src="https://cdn.jsdelivr.net/npm/p5@2.3.0/lib/p5.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.3.0/dist/p5.sound.min.js"></script>
 </head>
 <body>
+
 <header>
-    <h1>Panel de <?php echo $datos_usuario['nombre'] . " " . $datos_usuario['apellido']; ?></h1>
+    <?php if($user_id > 0 && $rol_usuario !== 'admin'): ?>
+        <h1>Panel de tu Grupo Familiar (Hola, <?php echo $nombre_usuario; ?>)</h1>
+    <?php else: ?>
+        <h1>Visualización General del Sistema (Invitado)</h1>
+    <?php endif; ?>
+    
     <div class="info-perfil">
-        <div class="codigo-badge">Código Familiar: <?php echo $datos_usuario['codigo_familiar'] ?? 'Sin grupo'; ?></div>
-        <a href="logout.php" class="btn-salir">Cerrar Sesión</a>
+        <?php if($user_id === 0): ?>
+            <a href="login.html" class="btn-nav btn-azul">Iniciar Sesión</a>
+            <a href="registro.html" class="btn-nav btn-verde">Crear Cuenta</a>
+        <?php else: ?>
+            <a href="index.php?vista=publica" class="btn-nav btn-azul">Volver al Index General</a>
+            <a href="logout.php" class="btn-salir">Cerrar Sesión</a>
+        <?php endif; ?>
     </div>
 </header>
-<main id="contenedor"></main>
-<script> const ID_USUARIO_LOGUEADO = <?php echo $user_id; ?>; </script>
-<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
-<script src="sketch.js"></script>
+
+<main style="padding: 0; margin: 0; overflow: hidden; background-color: #05050a;">
+    <iframe 
+        src="p5/empty-example/index.html?usuario_id=<?php echo $user_id; ?>" 
+        style="width: 100vw; height: calc(100vh - 75px); border: none; display: block;"
+        scrolling="no">
+    </iframe>
+</main>
+
 </body>
 </html>

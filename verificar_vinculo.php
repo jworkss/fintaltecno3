@@ -9,7 +9,6 @@ if (!isset($_GET["mac"])) {
 
 $mac = mysqli_real_escape_string($conexion, trim($_GET["mac"]));
 
-// Buscar qué usuario tiene asignada esa dirección MAC
 $consulta = "SELECT id FROM usuarios WHERE esp_mac = '$mac' LIMIT 1";
 $resultado = mysqli_query($conexion, $consulta);
 

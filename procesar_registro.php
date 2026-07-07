@@ -6,8 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = mysqli_real_escape_string($conexion, trim($_POST["nombre"]));
     $apellido = mysqli_real_escape_string($conexion, trim($_POST["apellido"]));
     $correo = mysqli_real_escape_string($conexion, trim($_POST["correo"]));
-    $contrasenia_plana = mysqli_real_escape_string($conexion, trim($_POST["contrasenia"])); // Texto plano
+    $contrasenia_plana = mysqli_real_escape_string($conexion, trim($_POST["contrasenia"]));
     $tiene_familia = $_POST["tiene_familia"];
+    $edad = (int)$_POST["edad"];
     
     $check_correo = mysqli_query($conexion, "SELECT id FROM usuarios WHERE correo = '$correo'");
     if (mysqli_num_rows($check_correo) > 0) {
@@ -42,9 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Guardamos la contraseña plana directamente en la base de datos
-    $insertar_usuario = "INSERT INTO usuarios (nombre, apellido, correo, contrasenia, rol, familia_id) 
-                         VALUES ('$nombre', '$apellido', '$correo', '$contrasenia_plana', 'usuario', " . ($familia_id ? $familia_id : "NULL") . ")";
+    $insertar_usuario = "INSERT INTO usuarios (nombre, apellido, correo, contrasenia, rol, familia_id, edad) 
+                     VALUES ('$nombre', '$apellido', '$correo', '$contrasenia_plana', 'usuario', " . ($familia_id ? $familia_id : "NULL") . ", $edad)";
     
     if (mysqli_query($conexion, $insertar_usuario)) {
         echo "<div style='font-family:Arial; color:white;'><h3>¡Registro Completo!</h3><a href='login.html' style='color:#00ff88;'>Iniciar Sesión</a></div>";
