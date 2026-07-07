@@ -1,0 +1,67 @@
+.contenedor-formulario {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.tarjeta-login {
+  background-color: var(--color-card);
+  border: 1px solid #2a1c21;
+  border-radius: 8px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.tarjeta-login h2 {
+  color: var(--color-primario);
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.grupo-campo {
+  margin-bottom: 20px;
+}
+
+.grupo-campo label {
+  display: block;
+  color: var(--color-texto-mutado);
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.grupo-campo input {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-fondo);
+  border: 1px solid #422b33;
+  border-radius: 4px;
+  color: var(--color-texto);
+  font-family: inherit;
+}
+
+.grupo-campo input:focus {
+  border-color: var(--color-secundario);
+  outline: none;
+}
+
+.btn-enviar {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--color-primario);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-enviar:hover {
+  background-color: var(--color-secundario);
+  transform: translateY(-1px);
+}

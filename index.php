@@ -17,6 +17,8 @@ $rol_usuario = isset($_SESSION['rol']) ? $_SESSION['rol'] : "";
     <meta charset="UTF-8">
     <title>Panel de Monitoreo - Sistema Pulsaciones</title>
     <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/panel.css">
 </head>
 <body>
 
@@ -36,6 +38,7 @@ $rol_usuario = isset($_SESSION['rol']) ? $_SESSION['rol'] : "";
             <a href="logout.php" class="btn-salir">Cerrar Sesión</a>
         <?php endif; ?>
     </div>
+    
 </header>
 
 <main style="padding: 0; margin: 0; overflow: hidden; background-color: #05050a;">

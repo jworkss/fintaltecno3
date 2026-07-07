@@ -50,15 +50,7 @@ $resultado = mysqli_query($conexion, $consulta);
     <meta charset="UTF-8">
     <title>Gestión Avanzada - Administrador</title>
     <link rel="stylesheet" href="panel.css">
-    <style>
-        .seccion-admin { background: #222; padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 1100px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .form-mini { display: inline-block; background: #333; padding: 8px; border-radius: 4px; margin-top: 5px; }
-        .form-mini input, .form-mini select { padding: 5px; background: #222; color: #fff; border: 1px solid #555; border-radius: 3px; }
-        .form-mini button { padding: 5px 10px; background: #00ff88; border: none; font-weight: bold; cursor: pointer; border-radius: 3px; color: #111; }
-        .btn-eliminar { background-color: #ff4444 !important; color: white !important; }
-        .btn-eliminar:hover { background-color: #cc0000 !important; }
-        .btn-enlace { display: inline-block; margin-bottom: 15px; padding: 10px; background: #333; color: #00ff88; text-decoration: none; border-radius: 4px; font-weight: bold; }
-    </style>
+    
 </head>
 <body>
 <header>

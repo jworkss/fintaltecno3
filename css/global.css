@@ -1,0 +1,27 @@
+:root {
+  --color-fondo: #0a0608;
+  --color-card: #171013;
+  --color-primario: #ff3344;
+  --color-secundario: #ff7733;
+  --color-acento: #ffcc00;
+  --color-texto: #f5f0f2;
+  --color-texto-mutado: #a5999e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "monospace", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}

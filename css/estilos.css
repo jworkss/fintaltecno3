@@ -1,75 +1,100 @@
+:root {
+  --color-fondo: #0a0608;
+  --color-card: #171013;
+  --color-primario: #ff3344;
+  --color-secundario: #ff7733;
+  --color-acento: #ffcc00;
+  --color-texto: #f5f0f2;
+  --color-texto-mutado: #a5999e;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #111;
-  color: #fff;
+  font-family: "monospace", Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
 }
+
 .contenedor {
-  background-color: #222;
+  background-color: var(--color-card);
   padding: 30px;
   border-radius: 8px;
   width: 350px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a1c21;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
+
 h2 {
   margin-top: 0;
   text-align: center;
-  color: #00ff88;
+  color: var(--color-primario);
 }
+
 .campo {
   margin-bottom: 15px;
 }
+
 label {
   display: block;
   margin-bottom: 5px;
   font-size: 14px;
+  color: var(--color-texto-mutado);
 }
+
 input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #444;
-  background-color: #333;
-  color: #fff;
+  border: 1px solid #422b33;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   border-radius: 4px;
   box-sizing: border-box;
+  font-family: inherit;
 }
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #444;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
+
+input:focus {
+  border-color: var(--color-secundario);
+  outline: none;
 }
+
 button {
   width: 100%;
   padding: 12px;
-  background-color: #00ff88;
+  background-color: var(--color-primario);
   border: none;
-  color: #111;
+  color: #000;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  font-family: inherit;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
+
 button:hover {
-  background-color: #00cc6c;
+  background-color: var(--color-secundario);
 }
+
+button:active {
+  transform: scale(0.98);
+}
+
 .enlace-pie {
   display: block;
   text-align: center;
   margin-top: 15px;
-  color: #aaa;
+  color: var(--color-texto-mutado);
   text-decoration: none;
   font-size: 14px;
+  transition: color 0.2s ease;
 }
+
 .enlace-pie:hover {
-  color: #00ff88;
-}
-#seccion_codigo {
-  display: none;
+  color: var(--color-acento);
 }
