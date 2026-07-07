@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login - Pulsaciones</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <div class="contenedor">
+      <h2>Iniciar Sesión</h2>
+      <form action="procesar_login.php" method="POST">
+        <div class="campo">
+          <label>Correo</label><input type="email" name="correo" required />
+        </div>
+        <div class="campo">
+          <label>Contraseña</label
+          ><input type="password" name="contrasenia" required />
+        </div>
+        <button type="submit">Ingresar</button>
+      </form>
+      <a href="registro.html" class="enlace-pie"
+        >¿No tenés cuenta? Registrate</a
+      >
+    </div>
+  </body>
+</html>

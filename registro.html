@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro - Pulsaciones</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <div class="contenedor">
+      <h2>Crear Cuenta</h2>
+      <form action="procesar_registro.php" method="POST">
+        <div class="campo">
+          <label>Nombre</label><input type="text" name="nombre" required />
+        </div>
+        <div class="campo">
+          <label>Apellido</label><input type="text" name="apellido" required />
+        </div>
+        <div class="campo">
+          <label>Correo</label><input type="email" name="correo" required />
+        </div>
+        <div class="campo">
+          <label>Contraseña</label
+          ><input type="password" name="contrasenia" required />
+        </div>
+        <div class="campo">
+          <label>¿Tu familia ya está registrada?</label>
+          <select name="tiene_familia" onchange="toggleFamilia(this.value)">
+            <option value="no">No, generar código nuevo</option>
+            <option value="si">Sí, ya tengo un código</option>
+          </select>
+        </div>
+        <div class="campo" id="seccion_codigo">
+          <label>Código Familiar (4 dígitos)</label>
+          <input
+            type="text"
+            id="codigo_familiar"
+            name="codigo_familiar"
+            maxlength="4"
+          />
+        </div>
+        <button type="submit">Registrarse</button>
+      </form>
+      <a href="login.html" class="enlace-pie">¿Ya tenés cuenta? Logueate</a>
+    </div>
+    <script>
+      function toggleFamilia(v) {
+        document.getElementById("seccion_codigo").style.display =
+          v === "si" ? "block" : "none";
+        document.getElementById("codigo_familiar").required = v === "si";
+      }
+    </script>
+  </body>
+</html>
